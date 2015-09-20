@@ -1,0 +1,37 @@
+---
+title: "RepData_PeerAssessment1"
+author: "Sunny"
+date: "September 20, 2015"
+output: html_document
+---
+
+
+```{r}
+
+#Load data
+x<-read.csv("D:/Box/JohnHopkins/Rep Research/Wk2/activity.csv",colClasses=c("numeric","Date","numeric"))
+
+
+#Aggregate daily
+daily <- aggregate(x$steps~x$date,FUN=sum,na.rm=TRUE)
+
+#Plot Histogram
+hist(daily$`x$steps`)
+
+#mean
+mean(daily$`x$steps`)
+
+#median
+median(daily$`x$steps`)
+
+
+# Avg daily pattern
+intervals <- aggregate(x$steps~x$interval,FUN=mean,na.rm=TRUE)
+plot(intervals$'x$interval', intervals$'x$steps', type = "l")
+
+# Interval with highest number of avg steps
+intervals[which.max(intervals$`x$steps`),]
+
+
+```
+
